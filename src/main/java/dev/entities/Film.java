@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Film {
@@ -26,23 +26,20 @@ public class Film {
 	private Categorie catégorie;
 	@ManyToMany
 	@JoinTable(name = "film_acteur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_acteur"))
-	private List<Acteur> acteurs = new ArrayList<Acteur>();
+	private List<Acteur> acteurs;
 
 	@ManyToMany
 	@JoinTable(name = "film_producteur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_producteur"))
-	private List<Producteur> producteurs = new ArrayList<Producteur>();
-	
+	private List<Producteur> producteurs;
+
 	@ManyToMany
 	@JoinTable(name = "film_realisateur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_realisateur"))
-	private List<Realisateur> realisateurs = new ArrayList<Realisateur>();
-	
-	@ManyToOne
-	private Tache taches;
-	
-	
-	
-	
-	
+	private List<Realisateur> realisateurs;
+
+	@OneToMany
+	private List<Tache> taches;
+
+	//getteur setteur
 	
 	public Integer getId() {
 		return id;
@@ -60,12 +57,12 @@ public class Film {
 		this.titre = titre;
 	}
 
-	public int getAnneeSortie() {
+	public int getAnnee_sortie() {
 		return annee_sortie;
 	}
 
-	public void setAnneeSortie(int i) {
-		this.annee_sortie = i;
+	public void setAnnee_sortie(int annee_sortie) {
+		this.annee_sortie = annee_sortie;
 	}
 
 	public Categorie getCatégorie() {
@@ -83,5 +80,31 @@ public class Film {
 	public void setActeurs(List<Acteur> acteurs) {
 		this.acteurs = acteurs;
 	}
+
+	public List<Producteur> getProducteurs() {
+		return producteurs;
+	}
+
+	public void setProducteurs(List<Producteur> producteurs) {
+		this.producteurs = producteurs;
+	}
+
+	public List<Realisateur> getRealisateurs() {
+		return realisateurs;
+	}
+
+	public void setRealisateurs(List<Realisateur> realisateurs) {
+		this.realisateurs = realisateurs;
+	}
+
+	public List<Tache> getTaches() {
+		return taches;
+	}
+
+	public void setTaches(List<Tache> taches) {
+		this.taches = taches;
+	}
+
+	
 
 }
