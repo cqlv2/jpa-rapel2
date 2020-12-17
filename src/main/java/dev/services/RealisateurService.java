@@ -39,8 +39,9 @@ public class RealisateurService implements ServicesInterface<Realisateur, Realis
 
 	@Override
 	public RealisateurDtoRep addUpdate(RealisateurDtoQuery query) {
-		// TODO Auto-generated method stub
-		return null;
+		Realisateur r=this.dtoToEntity(query);
+		realRepo.save(r);
+		return this.entityToDto(r);
 	}
 
 	@Override
@@ -66,8 +67,21 @@ public class RealisateurService implements ServicesInterface<Realisateur, Realis
 
 	@Override
 	public Realisateur dtoToEntity(RealisateurDtoQuery query) {
-		// TODO Auto-generated method stub
-		return null;
+		Realisateur r =new Realisateur();
+		if(query.getId()!=null) {
+			r.setId(query.getId());
+		}
+		
+		r.setNom(query.getNom());
+		r.setPrenom(query.getPrenom());
+		//r.setAdresse(adresse);
+		r.setCommition(query.getCommission());
+		//r.setFilms(films);
+		return r;
+
+		
+		
+		
 	}
 
 }

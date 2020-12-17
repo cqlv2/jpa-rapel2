@@ -1,5 +1,17 @@
 package dev.dto.producteur;
 
-public class ProducteurDtoQuery {
+import dev.dto.IntervenantDtoQuery;
+
+public class ProducteurDtoQuery extends IntervenantDtoQuery {
+
+	private double budget;
+
+	public double getBudget() {
+		return budget;
+	}
+
+	public void setBudget(double budget) {
+		this.budget = budget;
+	}
 
 }

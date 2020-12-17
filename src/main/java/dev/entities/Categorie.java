@@ -32,12 +32,12 @@ public class Categorie {
 		this.nom = nom;
 	}
 
-	public LocalDate getDatemaj() {
+	public LocalDate getDate_maj() {
 		return date_maj;
 	}
 
-	public void setDatemaj(LocalDate datemaj) {
-		this.date_maj = datemaj;
+	public void setDate_maj(LocalDate date_maj) {
+		this.date_maj = date_maj;
 	}
 
 }

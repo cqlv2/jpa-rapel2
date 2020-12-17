@@ -25,22 +25,9 @@ public class Film {
 	@JoinColumn(name = "id_categ")
 	private Categorie categorie;
 	@ManyToMany
-	@JoinTable(name = "film_acteur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_acteur"))
-	private List<Acteur> acteurs = new ArrayList<Acteur>();
+	@JoinTable(name = "film_intervenant", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_intervenant"))
+	private List<Intervenant> intervenants = new ArrayList<Intervenant>();
 
-	@ManyToMany
-	@JoinTable(name = "film_producteur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_producteur"))
-	private List<Producteur> producteurs = new ArrayList<Producteur>();
-
-	@ManyToMany
-	@JoinTable(name = "film_realisateur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_realisateur"))
-	private List<Realisateur> realisateurs = new ArrayList<Realisateur>();
-
-	@OneToMany
-	private List<Tache> taches = new ArrayList<Tache>();
-
-	//getteur setteur
-	
 	public Integer getId() {
 		return id;
 	}
@@ -69,42 +56,16 @@ public class Film {
 		return categorie;
 	}
 
-	public void setCategorie(Categorie cetegorie) {
+	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
 
-	public List<Acteur> getActeurs() {
-		return acteurs;
+	public List<Intervenant> getIntervenants() {
+		return intervenants;
 	}
 
-	public void setActeurs(List<Acteur> acteurs) {
-		this.acteurs = acteurs;
+	public void setIntervenants(List<Intervenant> intervenants) {
+		this.intervenants = intervenants;
 	}
-
-	public List<Producteur> getProducteurs() {
-		return producteurs;
-	}
-
-	public void setProducteurs(List<Producteur> producteurs) {
-		this.producteurs = producteurs;
-	}
-
-	public List<Realisateur> getRealisateurs() {
-		return realisateurs;
-	}
-
-	public void setRealisateurs(List<Realisateur> realisateurs) {
-		this.realisateurs = realisateurs;
-	}
-
-	public List<Tache> getTaches() {
-		return taches;
-	}
-
-	public void setTaches(List<Tache> taches) {
-		this.taches = taches;
-	}
-
-	
 
 }

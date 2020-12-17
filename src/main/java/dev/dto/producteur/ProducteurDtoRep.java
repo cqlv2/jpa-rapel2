@@ -2,10 +2,10 @@ package dev.dto.producteur;
 
 import java.util.List;
 
-import dev.dto.IntervenantDto;
+import dev.dto.IntervenantDtoRep;
 import dev.dto.film.FilmDtoReponse;
 
-public class ProducteurDtoRep extends IntervenantDto {
+public class ProducteurDtoRep extends IntervenantDtoRep {
 
 	private double budget;
 	List<FilmDtoReponse> films;

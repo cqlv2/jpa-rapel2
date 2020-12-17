@@ -17,6 +17,14 @@ public class Adresse {
 	private String ville;
 	private String codePostal;
 
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		Id = id;
+	}
+
 	public int getNumeroRue() {
 		return numeroRue;
 	}

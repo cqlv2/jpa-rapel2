@@ -2,14 +2,14 @@ package dev.dto.acteur;
 
 import java.util.List;
 
-import dev.dto.IntervenantDto;
+import dev.dto.IntervenantDtoRep;
 import dev.dto.film.FilmDtoReponse;
 import dev.entities.Film;
 
-public class ActeurDtoReponse extends IntervenantDto{
+public class ActeurDtoReponse extends IntervenantDtoRep{
 
 	private String agence;
-	private float salaire;
+	private double salaire;
 
 
 	
@@ -19,11 +19,11 @@ public class ActeurDtoReponse extends IntervenantDto{
 	public void setAgence(String agence) {
 		this.agence = agence;
 	}
-	public float getSalaire() {
+	public double getSalaire() {
 		return salaire;
 	}
-	public void setSalaire(float salaire) {
-		this.salaire = salaire;
+	public void setSalaire(double d) {
+		this.salaire = d;
 	}
 	
 	

@@ -41,10 +41,26 @@ public class Jpa2Application implements CommandLineRunner {
 
 //		recherche de tous les films
 
-		// List<FilmDtoReponse> lf = filmServ.readAll();
-		// for (FilmDtoReponse f : lf) {
-		// System.out.println(f.getTitre());
-		// }
+		 List<FilmDtoReponse> lf = filmServ.readAll();
+		 for (FilmDtoReponse f : lf) {
+		 System.out.println(f.getTitre());
+		 }
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
 
 //		enregistrement d'un film
 
@@ -70,15 +86,15 @@ public class Jpa2Application implements CommandLineRunner {
 //		recherche de film par filtres
 		
 		//List<FilmDtoReponse> lf = filmServ.findBy("titreLike", "mon");
-		List<FilmDtoReponse> lf = filmServ.findBy("categorie", "film cool");
+		//List<FilmDtoReponse> lf = filmServ.findBy("categorie", "film cool");
 		
 		
 		
 		
-		System.out.println("la requete contient "+lf.size()+" resultat(s)");
-		for (FilmDtoReponse f : lf) {
-			System.out.println(f.getTitre());
-		}
+		//System.out.println("la requete contient "+lf.size()+" resultat(s)");
+		//for (FilmDtoReponse f : lf) {
+		//	System.out.println(f.getTitre());
+		//}
 
 	}
 }

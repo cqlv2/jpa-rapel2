@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,9 +18,13 @@ public class Tache {
 	private Integer id;
 	private String destription;
 	private LocalDate date;
-	
+
 	@OneToOne
 	private DateEcheance dateEcheance;
+
+	@ManyToOne
+	@JoinColumn(name = "intervenantId")
+	private Intervenant intervenantId;
 
 	public Integer getId() {
 		return id;
@@ -50,6 +56,14 @@ public class Tache {
 
 	public void setDateEcheance(DateEcheance dateEcheance) {
 		this.dateEcheance = dateEcheance;
+	}
+
+	public Intervenant getIntervenantId() {
+		return intervenantId;
+	}
+
+	public void setIntervenantId(Intervenant intervenantId) {
+		this.intervenantId = intervenantId;
 	}
 
 }

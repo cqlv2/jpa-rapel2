@@ -3,6 +3,7 @@ package dev.dto.film;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.dto.IntervenantDtoRep;
 import dev.dto.acteur.ActeurDtoReponse;
 import dev.dto.producteur.ProducteurDtoRep;
 import dev.dto.realisateur.RealisateurDtoRep;
@@ -14,10 +15,7 @@ public class FilmDtoReponse {
 	private String titre;
 	private int annee_sortie;
 	private String catégorie;
-	private List<ActeurDtoReponse> acteurs = new ArrayList<ActeurDtoReponse>();
-	private List<ProducteurDtoRep> producteurs = new ArrayList<ProducteurDtoRep>();
-	private List<RealisateurDtoRep> realisateurs = new ArrayList<RealisateurDtoRep>();
-	private List<TacheDtoRep> taches = new ArrayList<TacheDtoRep>();
+	private List<IntervenantDtoRep> intervenants = new ArrayList<IntervenantDtoRep>();
 
 	public Integer getId() {
 		return id;
@@ -51,38 +49,12 @@ public class FilmDtoReponse {
 		this.catégorie = catégorie;
 	}
 
-	public List<ActeurDtoReponse> getActeurs() {
-		return acteurs;
+	public List<IntervenantDtoRep> getIntervenants() {
+		return intervenants;
 	}
 
-	public void setActeurs(List<ActeurDtoReponse> acteurs) {
-		this.acteurs = acteurs;
+	public void setIntervenants(List<IntervenantDtoRep> intervenants) {
+		this.intervenants = intervenants;
 	}
-
-	public List<ProducteurDtoRep> getProducteurs() {
-		return producteurs;
-	}
-
-	public void setProducteurs(List<ProducteurDtoRep> producteurs) {
-		this.producteurs = producteurs;
-	}
-
-	public List<RealisateurDtoRep> getRealisateurs() {
-		return realisateurs;
-	}
-
-	public void setRealisateurs(List<RealisateurDtoRep> realisateurs) {
-		this.realisateurs = realisateurs;
-	}
-
-	public List<TacheDtoRep> getTaches() {
-		return taches;
-	}
-
-	public void setTaches(List<TacheDtoRep> taches) {
-		this.taches = taches;
-	}
-
-	
 
 }

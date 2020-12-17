@@ -2,10 +2,10 @@ package dev.dto.realisateur;
 
 import java.util.List;
 
-import dev.dto.IntervenantDto;
+import dev.dto.IntervenantDtoRep;
 import dev.dto.film.FilmDtoReponse;
 
-public class RealisateurDtoRep extends IntervenantDto {
+public class RealisateurDtoRep extends IntervenantDtoRep {
 
 	private double commition;
 	private List<FilmDtoReponse> films;

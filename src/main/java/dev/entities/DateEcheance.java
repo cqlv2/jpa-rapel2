@@ -14,21 +14,21 @@ public class DateEcheance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private LocalDate dateEcheance;
-	
-	
-	
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public LocalDate getDateEcheance() {
 		return dateEcheance;
 	}
+
 	public void setDateEcheance(LocalDate dateEcheance) {
 		this.dateEcheance = dateEcheance;
 	}
-	
-	
+
 }

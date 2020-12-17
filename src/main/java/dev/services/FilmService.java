@@ -8,11 +8,8 @@ import org.springframework.stereotype.Service;
 
 import dev.dto.film.FilmDtoQuery;
 import dev.dto.film.FilmDtoReponse;
-import dev.entities.Acteur;
 import dev.entities.Film;
-import dev.entities.Producteur;
-import dev.entities.Realisateur;
-import dev.entities.Tache;
+import dev.entities.Intervenant;
 import dev.exception.RepoException;
 import dev.interfaces.ServicesInterface;
 import dev.repositories.FilmRepository;
@@ -21,20 +18,15 @@ import dev.repositories.FilmRepository;
 public class FilmService implements ServicesInterface<Film, FilmDtoReponse, FilmDtoQuery> {
 
 	private FilmRepository filmRepo;
-	private ActeurService acteurService;
-	private ProducteurService prodService;
-	private RealisateurService realService;
+	private IntervenantService interService;
 	private TacheSercice tacheService;
 	private CategorieService catService;
 
-	public FilmService(FilmRepository filmRepo, ActeurService acteurService, ProducteurService prodService,
-			RealisateurService realService, TacheSercice tacheService, CategorieService catService) {
+	public FilmService(FilmRepository filmRepo, CategorieService catService,IntervenantService interService) {
 		this.filmRepo = filmRepo;
-		this.acteurService = acteurService;
-		this.prodService = prodService;
-		this.realService = realService;
 		this.tacheService = tacheService;
 		this.catService = catService;
+		this.interService=interService;
 	}
 
 	@Override
@@ -115,21 +107,10 @@ public class FilmService implements ServicesInterface<Film, FilmDtoReponse, Film
 		dto.setAnnee_sortie(entity.getAnnee_sortie());
 		dto.setCatégorie(entity.getCategorie().getNom());
 
-		for (Acteur a : entity.getActeurs()) {
-			dto.getActeurs().add(acteurService.entityToDto(a));
+		for (Intervenant i : entity.getIntervenants()) {
+			dto.getIntervenants().add(interService.entityToDto(i));
 		}
 
-		for (Producteur p : entity.getProducteurs()) {
-			dto.getProducteurs().add(prodService.entityToDto(p));
-		}
-
-		for (Realisateur r : entity.getRealisateurs()) {
-			dto.getRealisateurs().add(realService.entityToDto(r));
-		}
-
-		for (Tache t : entity.getTaches()) {
-			dto.getTaches().add(tacheService.entityToDto(t));
-		}
 		return dto;
 	}
 
@@ -143,20 +124,11 @@ public class FilmService implements ServicesInterface<Film, FilmDtoReponse, Film
 		}
 		f.setTitre(query.getTitre());
 		f.setAnnee_sortie(query.getAnnee_sortie());
-		f.setCate	gorie(catService.findEntityById(query.getCategorieId()));
-		for (int id : query.getActeursId()) {
-			f.getActeurs().add(acteurService.findEntityById(id));
+		f.setCategorie(catService.findEntityById(query.getCategorieId()));
+		for (int id : query.getIntervenantsId()) {
+			f.getIntervenants().add(interService.findEntityById(id));
 		}
-		for (int id : query.getProducteursId()) {
-			f.getProducteurs().add(prodService.findEntityById(id));
-		}
-		for (int id : query.getRealisateursId()) {
-			f.getRealisateurs().add(realService.findEntityById(id));
-		}
-		for (int id : query.getTachesId()) {
-			f.getTaches().add(tacheService.findEntityById(id));
-		}
-
+		
 		return f;
 	}
 
