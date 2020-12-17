@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import dev.dto.acteur.ActeurDtoReponse;
 import dev.dto.film.FilmDtoQuery;
 import dev.dto.film.FilmDtoReponse;
 import dev.entities.Film;
@@ -46,15 +47,25 @@ public class Jpa2Application implements CommandLineRunner{
 
 //		enregistrement d'un film
 		
-		//FilmDtoQuery f= new FilmDtoQuery();
-		//f.setTitre("monFilm2");
-		//f.setAnnee_sortie(2003);
-		//f.getActeursId().add(1);
-		//f.setCategorie(1);
-		//f.getProducteursId().add(1);
-		//f.getRealisateursId().add(1);
-		//FilmDtoReponse filmSaved=(filmServ.addUpdate(f));
-	
+		FilmDtoQuery f= new FilmDtoQuery();
+		f.setTitre("monFilm2");
+		f.setAnnee_sortie(2003);
+		f.getActeursId().add(1);
+		f.setCategorie(1);
+		f.getProducteursId().add(1);
+		f.getRealisateursId().add(1);
+		FilmDtoReponse filmSaved=(filmServ.addUpdate(f));
+		System.out.println(filmSaved.getId());
+		System.out.println(filmSaved.getTitre());
+		System.out.println(filmSaved.getAnnee_sortie());
+		for (ActeurDtoReponse a : filmSaved.getActeurs()) {
+			System.out.println(a.getNom());
+			System.out.println(a.getPrenom());
+		}
+		
+		
+		
+		
 //		supression d'un film
 		//filmServ.delete(4);
 		
