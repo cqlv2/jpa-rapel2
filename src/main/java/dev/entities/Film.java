@@ -26,18 +26,18 @@ public class Film {
 	private Categorie catégorie;
 	@ManyToMany
 	@JoinTable(name = "film_acteur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_acteur"))
-	private List<Acteur> acteurs;
+	private List<Acteur> acteurs = new ArrayList<Acteur>();
 
 	@ManyToMany
 	@JoinTable(name = "film_producteur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_producteur"))
-	private List<Producteur> producteurs;
+	private List<Producteur> producteurs = new ArrayList<Producteur>();
 
 	@ManyToMany
 	@JoinTable(name = "film_realisateur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_realisateur"))
-	private List<Realisateur> realisateurs;
+	private List<Realisateur> realisateurs = new ArrayList<Realisateur>();
 
 	@OneToMany
-	private List<Tache> taches;
+	private List<Tache> taches = new ArrayList<Tache>();
 
 	//getteur setteur
 	

@@ -10,12 +10,14 @@ public class FilmDtoQuery {
 
 	private Integer id=null;
 	private String titre;
-	private int annee_sortie;
-	private Categorie catégorie;
+	private Integer annee_sortie;
+	private Integer categorieId;
 	private List<Integer> acteursId = new ArrayList<Integer>();
 	private List<Integer> producteursId = new ArrayList<Integer>();
 	private List<Integer> realisateursId = new ArrayList<Integer>();
-	private Tache taches;
+	private List<Integer> tachesId= new ArrayList<Integer>();
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -28,17 +30,17 @@ public class FilmDtoQuery {
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
-	public int getAnnee_sortie() {
+	public Integer getAnnee_sortie() {
 		return annee_sortie;
 	}
-	public void setAnnee_sortie(int annee_sortie) {
+	public void setAnnee_sortie(Integer annee_sortie) {
 		this.annee_sortie = annee_sortie;
 	}
-	public Categorie getCatégorie() {
-		return catégorie;
+	public Integer getCategorieId() {
+		return categorieId;
 	}
-	public void setCatégorie(Categorie catégorie) {
-		this.catégorie = catégorie;
+	public void setCategorie(Integer categorieId) {
+		this.categorieId = categorieId;
 	}
 	public List<Integer> getActeursId() {
 		return acteursId;
@@ -58,11 +60,11 @@ public class FilmDtoQuery {
 	public void setRealisateursId(List<Integer> realisateursId) {
 		this.realisateursId = realisateursId;
 	}
-	public Tache getTaches() {
-		return taches;
+	public List<Integer> getTachesId() {
+		return tachesId;
 	}
-	public void setTaches(Tache taches) {
-		this.taches = taches;
+	public void setTaches(List<Integer> tachesId) {
+		this.tachesId = tachesId;
 	}
 	
 }

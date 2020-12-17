@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import dev.dto.film.FilmDtoQuery;
 import dev.dto.film.FilmDtoReponse;
 import dev.entities.Film;
 import dev.services.FilmService;
@@ -27,7 +28,6 @@ public class Jpa2Application implements CommandLineRunner{
 
 	@Autowired
 	FilmService filmServ;
-	
 	public static void main(String[] args) {
 		SpringApplication.run(Jpa2Application.class, args);
 
@@ -36,15 +36,29 @@ public class Jpa2Application implements CommandLineRunner{
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {
+	
+//		recherche de tous les films
 		
-		List<FilmDtoReponse> lf = filmServ.readAll();
-		for (FilmDtoReponse f : lf) {
-			System.out.println(f.getTitre());
-		}
+		//List<FilmDtoReponse> lf = filmServ.readAll();
+		//for (FilmDtoReponse f : lf) {
+		//	System.out.println(f.getTitre());
+		//}
 
-				
+//		enregistrement d'un film
+		
+		//FilmDtoQuery f= new FilmDtoQuery();
+		//f.setTitre("monFilm2");
+		//f.setAnnee_sortie(2003);
+		//f.getActeursId().add(1);
+		//f.setCategorie(1);
+		//f.getProducteursId().add(1);
+		//f.getRealisateursId().add(1);
+		//FilmDtoReponse filmSaved=(filmServ.addUpdate(f));
+	
+//		supression d'un film
+		//filmServ.delete(4);
+		
+		
+	
 	}
-
-	
-	
 }

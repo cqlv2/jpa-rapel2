@@ -1,12 +1,14 @@
 package dev.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import dev.dto.tache.TacheDtoQuery;
 import dev.dto.tache.TacheDtoRep;
 import dev.entities.Tache;
+import dev.exception.RepoException;
 import dev.interfaces.ServicesInterface;
 import dev.repositories.tacheRepository;
 
@@ -27,21 +29,23 @@ public class TacheSercice implements ServicesInterface<Tache, TacheDtoRep, Tache
 	}
 
 	@Override
-	public TacheDtoRep readById(int id) {
+	public Tache findEntityById(int id) throws RepoException{
+		Optional<Tache> t =tacheRepo.findById(id);
+		if(t.isPresent()) {
+			return t.get();
+		}else throw new RepoException("id introuvable");
+	}
+
+	@Override
+	public TacheDtoRep addUpdate(TacheDtoQuery query) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public TacheDtoRep addUpdate(Tache entity) {
+	public String delete(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void delete(Tache entity) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

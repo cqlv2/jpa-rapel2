@@ -1,6 +1,7 @@
 package dev.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,7 @@ import dev.dto.realisateur.RealisateurDtoQuery;
 import dev.dto.realisateur.RealisateurDtoRep;
 import dev.entities.Film;
 import dev.entities.Realisateur;
+import dev.exception.RepoException;
 import dev.interfaces.ServicesInterface;
 import dev.repositories.RealisateurRepository;
 
@@ -28,21 +30,23 @@ public class RealisateurService implements ServicesInterface<Realisateur, Realis
 	}
 
 	@Override
-	public RealisateurDtoRep readById(int id) {
+	public Realisateur findEntityById(int id) throws RepoException {
+		Optional<Realisateur> r = realRepo.findById(id);
+		if(r.isPresent()) {
+			return r.get();
+		}else throw new RepoException("id introuvable");
+	}
+
+	@Override
+	public RealisateurDtoRep addUpdate(RealisateurDtoQuery query) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public RealisateurDtoRep addUpdate(Realisateur entity) {
+	public String delete(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void delete(Realisateur entity) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

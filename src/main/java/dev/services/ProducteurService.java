@@ -1,6 +1,7 @@
 package dev.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,7 @@ import dev.dto.producteur.ProducteurDtoQuery;
 import dev.dto.producteur.ProducteurDtoRep;
 import dev.entities.Film;
 import dev.entities.Producteur;
+import dev.exception.RepoException;
 import dev.interfaces.ServicesInterface;
 import dev.repositories.ProducteurRepository;
 
@@ -28,21 +30,23 @@ public class ProducteurService implements ServicesInterface<Producteur, Producte
 	}
 
 	@Override
-	public ProducteurDtoRep readById(int id) {
+	public Producteur findEntityById(int id) throws RepoException{
+		Optional<Producteur> p=prodRepo.findById(id);
+		if(p.isPresent()) {
+			return p.get();
+		}else throw new RepoException("id introuvable");
+	}
+
+	@Override
+	public ProducteurDtoRep addUpdate(ProducteurDtoQuery query) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ProducteurDtoRep addUpdate(Producteur entity) {
+	public String delete(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void delete(Producteur entity) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
