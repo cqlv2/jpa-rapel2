@@ -21,14 +21,15 @@ import dev.entities.Film;
 import dev.services.FilmService;
 
 @SpringBootApplication
-@ComponentScan({"dev"})
+@ComponentScan({ "dev" })
 @EntityScan("dev.entities")
 @EnableJpaRepositories("dev.repositories")
 @EnableTransactionManagement
-public class Jpa2Application implements CommandLineRunner{
+public class Jpa2Application implements CommandLineRunner {
 
 	@Autowired
 	FilmService filmServ;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Jpa2Application.class, args);
 
@@ -37,39 +38,47 @@ public class Jpa2Application implements CommandLineRunner{
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {
-	
+
 //		recherche de tous les films
-		
-		//List<FilmDtoReponse> lf = filmServ.readAll();
-		//for (FilmDtoReponse f : lf) {
-		//	System.out.println(f.getTitre());
-		//}
+
+		// List<FilmDtoReponse> lf = filmServ.readAll();
+		// for (FilmDtoReponse f : lf) {
+		// System.out.println(f.getTitre());
+		// }
 
 //		enregistrement d'un film
-		
-		FilmDtoQuery f= new FilmDtoQuery();
-		f.setTitre("monFilm2");
-		f.setAnnee_sortie(2003);
-		f.getActeursId().add(1);
-		f.setCategorie(1);
-		f.getProducteursId().add(1);
-		f.getRealisateursId().add(1);
-		FilmDtoReponse filmSaved=(filmServ.addUpdate(f));
-		System.out.println(filmSaved.getId());
-		System.out.println(filmSaved.getTitre());
-		System.out.println(filmSaved.getAnnee_sortie());
-		for (ActeurDtoReponse a : filmSaved.getActeurs()) {
-			System.out.println(a.getNom());
-			System.out.println(a.getPrenom());
-		}
-		
-		
-		
-		
+
+		// FilmDtoQuery f= new FilmDtoQuery();
+		// f.setTitre("monFilm2");
+		// f.setAnnee_sortie(2003);
+		// f.getActeursId().add(1);
+		// f.setCategorie(1);
+		// f.getProducteursId().add(1);
+		// f.getRealisateursId().add(1);
+		// FilmDtoReponse filmSaved=(filmServ.addUpdate(f));
+		// System.out.println(filmSaved.getId());
+		// System.out.println(filmSaved.getTitre());
+		// System.out.println(filmSaved.getAnnee_sortie());
+		// for (ActeurDtoReponse a : filmSaved.getActeurs()) {
+		// System.out.println(a.getNom());
+		// System.out.println(a.getPrenom());
+		// }
+
 //		supression d'un film
-		//filmServ.delete(4);
+		// filmServ.delete(4);
+
+//		recherche de film par filtres
+		
+		//List<FilmDtoReponse> lf = filmServ.findBy("titreLike", "mon");
+		List<FilmDtoReponse> lf = filmServ.findBy("categorie", "film cool");
 		
 		
-	
+		
+		
+		System.out.println("la requete contient "+lf.size()+" resultat(s)");
+		for (FilmDtoReponse f : lf) {
+			System.out.println(f.getTitre());
+		}
+
 	}
 }

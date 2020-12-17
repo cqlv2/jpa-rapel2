@@ -55,6 +55,36 @@ public class FilmService implements ServicesInterface<Film, FilmDtoReponse, Film
 			throw new RepoException("id introuvable");
 	}
 
+	public List<FilmDtoReponse> findBy(String type, String search) throws RepoException {
+		List<FilmDtoReponse> list = new ArrayList<FilmDtoReponse>();
+		switch (type) {
+		// recherche par titre exact
+		case "titre":
+			for (Film film : filmRepo.findByTitre(search)) {
+				list.add(this.entityToDto(film));
+			}
+			break;
+		// recherche par titre resemblant
+		case "titreLike":
+			for (Film film : filmRepo.findByTitreContaining(search)) {
+				list.add(this.entityToDto(film));
+			}
+			break;
+
+		// recherche par categorie
+		case "categorie":
+			for (Film film : filmRepo.findByCategorie(search)) {
+				list.add(this.entityToDto(film));
+			}
+			break;
+
+		default:
+			throw new RepoException("type de recherche invalid");
+		}
+		return list;
+
+	}
+
 	@Override
 	public FilmDtoReponse addUpdate(FilmDtoQuery dtoQuery) {
 		Film f = null;
@@ -69,11 +99,12 @@ public class FilmService implements ServicesInterface<Film, FilmDtoReponse, Film
 
 	@Override
 	public String delete(Integer id) throws RepoException {
-		Optional<Film> f=filmRepo.findById(id);
-		if(f.isPresent()) {
+		Optional<Film> f = filmRepo.findById(id);
+		if (f.isPresent()) {
 			this.filmRepo.delete(f.get());
-			return f.get().getTitre()+"a été supprimé !"; 
-		}else throw new RepoException("suppr impossible id non trouvé !");
+			return f.get().getTitre() + "a été supprimé !";
+		} else
+			throw new RepoException("suppr impossible id non trouvé !");
 	}
 
 	@Override
@@ -82,7 +113,7 @@ public class FilmService implements ServicesInterface<Film, FilmDtoReponse, Film
 		dto.setId(entity.getId());
 		dto.setTitre(entity.getTitre());
 		dto.setAnnee_sortie(entity.getAnnee_sortie());
-		dto.setCatégorie(entity.getCatégorie().getNom());
+		dto.setCatégorie(entity.getCategorie().getNom());
 
 		for (Acteur a : entity.getActeurs()) {
 			dto.getActeurs().add(acteurService.entityToDto(a));
@@ -112,7 +143,7 @@ public class FilmService implements ServicesInterface<Film, FilmDtoReponse, Film
 		}
 		f.setTitre(query.getTitre());
 		f.setAnnee_sortie(query.getAnnee_sortie());
-		f.setCatégorie(catService.findEntityById(query.getCategorieId()));
+		f.setCate	gorie(catService.findEntityById(query.getCategorieId()));
 		for (int id : query.getActeursId()) {
 			f.getActeurs().add(acteurService.findEntityById(id));
 		}

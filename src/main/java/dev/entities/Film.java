@@ -23,7 +23,7 @@ public class Film {
 	private int annee_sortie;
 	@ManyToOne
 	@JoinColumn(name = "id_categ")
-	private Categorie catégorie;
+	private Categorie categorie;
 	@ManyToMany
 	@JoinTable(name = "film_acteur", joinColumns = @JoinColumn(name = "id_film"), inverseJoinColumns = @JoinColumn(name = "id_acteur"))
 	private List<Acteur> acteurs = new ArrayList<Acteur>();
@@ -65,12 +65,12 @@ public class Film {
 		this.annee_sortie = annee_sortie;
 	}
 
-	public Categorie getCatégorie() {
-		return catégorie;
+	public Categorie getCategorie() {
+		return categorie;
 	}
 
-	public void setCatégorie(Categorie catégorie) {
-		this.catégorie = catégorie;
+	public void setCategorie(Categorie cetegorie) {
+		this.categorie = categorie;
 	}
 
 	public List<Acteur> getActeurs() {
